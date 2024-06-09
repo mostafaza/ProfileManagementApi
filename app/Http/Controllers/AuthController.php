@@ -13,15 +13,15 @@ class AuthController extends Controller
     {
         
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'adm_email' => 'required|email',
+            'adm_password' => 'required',
         ]);
 
         //Recuperation du compte admin 
-        $admin = Administrator::where('email', $request->email)->first();
+        $admin = Administrator::where('adm_email', $request->adm_email)->first();
 
         //Verification si le compte administrator existe et si le mot de passe match avec le hash
-        if (!$admin || !Hash::check($request->password, $admin->password)) {
+        if (!$admin || !Hash::check($request->adm_password, $admin->adm_password)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 

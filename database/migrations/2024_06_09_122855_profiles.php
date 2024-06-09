@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administrators', function (Blueprint $table) {
+        //
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('pro_first_name');
+            $table->string('pro_last_name');
+            $table->string('pro_image_path');
+            $table->enum('pro_status', ['inactive', 'pending', 'active']);
             $table->timestamps();
         });
     }
@@ -22,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('administrators');
+        //
+        Schema::dropIfExists('profiles');
+
     }
 };

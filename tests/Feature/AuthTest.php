@@ -2,19 +2,28 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Administrator;
 use Illuminate\Support\Facades\Hash;
 
 class AuthTest extends TestCase
 {
-   
+    use RefreshDatabase;
+
 
     public function test_admin_login_with_correct_credentials()
     {
+        Administrator::create([
+            'adm_name' => 'Test Admin',
+            'adm_email' => 'admin@test.com',
+            'adm_password' => Hash::make('test'),
+            
+        ]);
+
         $response = $this->postJson('/api/login', [
-            'email' => 'admin@example.com',
-            'password' => 'test',
+            'adm_email' => 'admin@test.com',
+            'adm_password' => 'test',
         ]);
 
         $response->assertStatus(200);
@@ -24,8 +33,8 @@ class AuthTest extends TestCase
     public function test_admin_login_with_incorrect_credentials()
     {
         $response = $this->postJson('/api/login', [
-            'email' => 'admin@example.com',
-            'password' => 'test123',
+            'adm_email' => 'admin@test.com',
+            'adm_password' => 'test123',
         ]);
 
         $response->assertStatus(401);
