@@ -15,6 +15,11 @@ class ProfileController extends Controller
     {
         $profiles = Profile::where('pro_status', 'active')->get();
         
+         // Vérifie si l'utilisateur est authentifié avec Sanctum
+         if (!auth('sanctum')->check()) {
+            $profiles->makeHidden('pro_status');
+        }
+        
         return response()->json($profiles);
     }
 

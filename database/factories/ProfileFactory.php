@@ -22,7 +22,7 @@ class ProfileFactory extends Factory
             'pro_first_name' => fake()->name(),
             'pro_last_name' => fake()->name(),
             'pro_image_path' => UploadedFile::fake()->image('image.jpg'),
-            'pro_status' => 'active',
+            'pro_status' => $this->faker->randomElement(['inactive', 'pending', 'active']),
         ];
     }
 }
