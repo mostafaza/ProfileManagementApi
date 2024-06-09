@@ -57,6 +57,12 @@ Ce projet est une API Laravel pour gérer les profils d'utilisateurs, y compris 
     php artisan test
 ```
 
+<b>Note</b> : Les tests utilisent le trait RefreshDatabase, ce qui signifie qu'ils réactualisent toute la base de données. Veuillez relancer les seeders pour pouvoir utiliser l'application après avoir exécuté les tests :
+
+```
+    php artisan db:seed
+```
+
 ## Routes de l'API :
 
 Création de profil
