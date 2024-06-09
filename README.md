@@ -80,7 +80,7 @@ Mettre à jour un profil :
 Supprimer un profil :
 
 ```
-    DELETE /api/deleteProfile/{id}
+    DELETE /api/delProfile/{id}
 ```
 
 Récupérer les profils actifs :
@@ -90,9 +90,8 @@ Récupérer les profils actifs :
 ```
 ## Postman
 
-Tout est configuré sur Postman. Vous pouvez retrouver la collection Postman via
+Tout est configuré sur Postman. Vous pouvez retrouver la collection Postman via <a href="https://test-entretien-bouhou-mostafa.postman.co/workspace/Test-entretien-Bouhou-Mostafa-W~e35025ca-48a8-4b9d-8b9e-084cc409ac39/collection/36187956-00bf36bb-67b1-458c-bc84-5099449e427c">ce lien</a> .
 
-<a href="https://test-entretien-bouhou-mostafa.postman.co/workspace/Test-entretien-Bouhou-Mostafa-W~e35025ca-48a8-4b9d-8b9e-084cc409ac39/collection/36187956-00bf36bb-67b1-458c-bc84-5099449e427c">ce lien</a>
-
+<b>Note</b> : Une fois connectés en tant qu'administrateurs, veuillez mettre la clé générée par Sanctum dans l'en-tête `Authorization` en tant que `Bearer Token` pour toutes les requêtes `createProfile`, `updateProfile`, `delProfile`.
 
 
