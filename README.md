@@ -1,66 +1,97 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Projet de Gestion de Profils
 
-## About Laravel
+Ce projet est une API Laravel pour gérer les profils d'utilisateurs, y compris la création, la mise à jour, la suppression et la récupération des profils actifs.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Prérequis
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP >= 8.0
+- Composer
+- MySQL ou autre base de données supportée par Laravel
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+1. **Cloner le dépôt :**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+   ```bash
+   git clone https://github.com/mostafaza/ProfileManagementApi.git
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installer les dépendances PHP :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+        composer install
+```
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Configurez le .env :
 
-### Premium Partners
+```bash
+    php artisan key:generate
+```
+```bash
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=nom_de_votre_base_de_donnees
+    DB_USERNAME=votre_utilisateur
+    DB_PASSWORD=votre_mot_de_passe
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Exécutez les migrations et les seeders :
 
-## Contributing
+```bash
+    php artisan migrate --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Exécution de l'application :
 
-## Code of Conduct
+```bash
+   php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Tests :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+    php artisan test
+```
 
-## License
+<b>Note</b> : Les tests utilisent le trait RefreshDatabase, ce qui signifie qu'ils réactualisent toute la base de données. Veuillez relancer les seeders pour pouvoir utiliser l'application après avoir exécuté les tests :
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+    php artisan db:seed
+```
+
+## Routes de l'API :
+
+Création de profil
+
+```
+    POST /api/createProfile
+```
+
+Mettre à jour un profil :
+
+```
+    PUT /api/updateProfile/{id}
+```
+
+Supprimer un profil :
+
+```
+    DELETE /api/delProfile/{id}
+```
+
+Récupérer les profils actifs :
+
+```
+    GET /api/profiles/active
+```
+## Postman
+
+Tout est configuré sur Postman. Vous pouvez retrouver la collection Postman via <a href="https://test-entretien-bouhou-mostafa.postman.co/workspace/Test-entretien-Bouhou-Mostafa-W~e35025ca-48a8-4b9d-8b9e-084cc409ac39/collection/36187956-00bf36bb-67b1-458c-bc84-5099449e427c">ce lien</a> .
+
+<b>Note</b> : Une fois connectés en tant qu'administrateurs, veuillez mettre la clé générée par Sanctum dans l'en-tête `Authorization` en tant que `Bearer Token` pour toutes les requêtes `createProfile`, `updateProfile`, `delProfile`.
+
+
