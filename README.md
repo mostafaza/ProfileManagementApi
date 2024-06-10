@@ -86,7 +86,7 @@ Supprimer un profil :
 Récupérer les profils actifs :
 
 ```
-    GET /api/profiles/active
+    GET /api/getActiveProfiles
 ```
 ## Postman
 
