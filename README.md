@@ -43,6 +43,15 @@ Ce projet est une API Laravel pour gérer les profils d'utilisateurs, y compris 
 ```bash
     php artisan migrate --seed
 ```
+## Configuration du dossier public storage
+
+Le disque public inclus dans le fichier de configuration des systèmes de fichiers de votre application est destiné aux fichiers qui seront accessibles publiquement. Par défaut, le disque public utilise le driver local et stocke ses fichiers dans storage/app/public.
+
+Pour rendre ces fichiers accessibles depuis le web, vous devez créer un lien symbolique de public/storage vers storage/app/public.
+
+```bash
+    php artisan storage:link
+```
 
 ## Exécution de l'application :
 
@@ -64,6 +73,12 @@ Ce projet est une API Laravel pour gérer les profils d'utilisateurs, y compris 
 ```
 
 ## Routes de l'API :
+
+Connexion admin
+
+```
+    POST /api/login
+```
 
 Création de profil
 
@@ -88,10 +103,12 @@ Récupérer les profils actifs :
 ```
     GET /api/getActiveProfiles
 ```
-## Postman
+## Documentation Postman
 
-Tout est configuré sur Postman. Vous pouvez retrouver la collection Postman via <a href="https://test-entretien-bouhou-mostafa.postman.co/workspace/Test-entretien-Bouhou-Mostafa-W~e35025ca-48a8-4b9d-8b9e-084cc409ac39/collection/36187956-00bf36bb-67b1-458c-bc84-5099449e427c">ce lien</a> .
+<a href="https://documenter.getpostman.com/view/36187956/2sA3XLF4jh" target="_blank"> Cliquez ici </a>
 
-<b>Note</b> : Une fois connectés en tant qu'administrateurs, veuillez mettre la clé générée par Sanctum dans l'en-tête `Authorization` en tant que `Bearer Token` pour toutes les requêtes `createProfile`, `updateProfile`, `delProfile`.
+Pour avoir accès à la collection et la manipuler<a href="https://test-entretien-bouhou-mostafa.postman.co/workspace/Test-entretien-Bouhou-Mostafa-W~e35025ca-48a8-4b9d-8b9e-084cc409ac39/collection/36187956-00bf36bb-67b1-458c-bc84-5099449e427c" target="_blank">cliquez ici</a> .
+
+<b>Note</b> : Une fois connectés en tant qu'administrateurs, veuillez mettre la clé générée par Sanctum dans l'en-tête `Authorization` en tant que `Bearer Token` pour les requêtes `createProfile`, `updateProfile`, `delProfile`, `getActiveProfiles` .
 
 
